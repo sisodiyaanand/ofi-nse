@@ -26,3 +26,10 @@ No queue-position model (trade-through fills only); 1s resolution; snapshot-base
 ## Reproduce
 Data download and parquet conversion: see `src/data/`. Then `make all`.
 Note: in the train sweep, widen 0/1/2 at skew 4 were tied (+0.24 to +0.26); widen 1 and 2 were evaluated on held-out days, not picked from test results.
+
+## Latency breakeven (100ms bars, held-out days, fee 0, passive-only, no queue model)
+Sanity: 1000ms bars reproduce the earlier 1s results (+139.3 vs +139.7 USDT).
+skew4/widen1 total PnL by extra lag: 0ms +625, 100ms +405, 200ms +243, 500ms -141, 1000ms -587 USDT.
+skew4/widen2: +412, +232, +98, -215, -578. Vanilla is negative at every lag.
+Edge disappears between 200 and 500 ms. Rough breakeven maker fee at zero lag is about 0.3 bps (estimate, not simulated).
+Fills at 100ms are 2-3x higher than at 1s; without a queue model these results are an upper bound.
