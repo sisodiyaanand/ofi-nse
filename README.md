@@ -22,3 +22,7 @@ Train: first 3 days. Held-out: last 4 days.
 
 ## Limitations
 No queue-position model (trade-through fills only); 1s resolution; snapshot-based OFI; 7 non-consecutive days; one asset; fixed clip size; fee tiers not verified; parameters chosen on 3 train days only.
+
+## Reproduce
+Data download and parquet conversion: see `src/data/`. Then `make all`.
+Note: in the train sweep, widen 0/1/2 at skew 4 were tied (+0.24 to +0.26); widen 1 and 2 were evaluated on held-out days, not picked from test results.
