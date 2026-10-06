@@ -20,7 +20,7 @@ def simulate(mid, lo, hi, sig, hs_bps, fee_bps, p):
     for i in range(1, n):
         m = mid[i - 1]  # quotes use information up to second i-1 only
         r = m * (1 - p["inv_skew_bps"] * 1e-4 * q / qmax + p["sig_skew_bps"] * 1e-4 * sig[i - 1])
-        hs = m * hs_bps * 1e-4
+        hs = m * (hs_bps + p.get("widen_bps", 0.0) * abs(sig[i - 1])) * 1e-4
         bid, ask = r - hs, r + hs
         if lo[i] < bid and q < qmax:           # fill only if trades went THROUGH our quote
             cash -= bid * size * (1 + fee); q += 1; fills += 1
