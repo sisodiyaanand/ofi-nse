@@ -1,0 +1,7 @@
+# Parameters are fixed a priori, NOT tuned on this data.
+clip: 0.001            # BTC per fill
+qmax: 10               # max inventory in clips
+inv_skew_bps: 2.0      # quote shift at full inventory
+sig_skew_bps: 1.0      # quote shift at signal = +/-1
+half_spreads_bps: [1.0, 2.0]
+maker_fees_bps: [0.0, 2.0]   # verify current Binance fee tier before reporting
