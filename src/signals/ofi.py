@@ -35,7 +35,7 @@ def build_bars(day, sym="BTCUSDT"):
 
 if __name__ == "__main__":
     day = sys.argv[1]
-    bars = build_bars(day)
+    bars = build_bars(day, *sys.argv[2:3])
     c = Console()
     t = Table(title=f"Spearman IC vs forward mid return ({day}, n={bars.height} bars)")
     t.add_column("signal")

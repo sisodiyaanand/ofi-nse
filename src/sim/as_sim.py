@@ -34,8 +34,9 @@ def simulate(mid, lo, hi, sig, hs_bps, fee_bps, p):
 
 if __name__ == "__main__":
     p = yaml.safe_load(open("configs/sim.yaml"))
-    days = sorted(f.split("BTCUSDT-")[1][:10] for f in glob.glob("data/parquet/bars-BTCUSDT-*.parquet"))
-    data = {d: load(d) for d in days}
+    from src.common import SYM, days_for, split
+    days = days_for()
+    data = {d: load(d, SYM) for d in days}
     t = Table(title=f"A-S style simulation, {len(days)} days, trade-through fills, no queue model")
     for c in ("spread_bps", "fee_bps", "variant", "fills", "net PnL USDT", "bps/fill", "max|inv|", "mean Sharpe", "days>0"):
         t.add_column(c, justify="right")

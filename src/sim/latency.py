@@ -40,7 +40,8 @@ def sim(mid, lo, hi, sig, hs_bps, widen, skew, inv_skew, fee, size, qmax, lag):
 
 if __name__ == "__main__":
     p = yaml.safe_load(open("configs/sim.yaml"))
-    days = sorted(f[-18:-8] for f in glob.glob("data/parquet/BTCUSDT-book5-*.parquet"))[3:]
+    from src.common import SYM, days_for, split
+    days = split(days_for())[1]
     cfgs = {"vanilla": (0.0, 0.0), "skew4/widen1": (4.0, 1.0), "skew4/widen2": (4.0, 2.0)}
     t = Table(title="Latency breakeven, held-out days, half-spread 1bp, fee 0, passive-only")
     for c in ("bar_ms", "extra_lag_ms", "config"):
@@ -50,7 +51,7 @@ if __name__ == "__main__":
     for c in ("total USDT", "fills"):
         t.add_column(c, justify="right")
     for dt in (1000, 100):
-        data = {d: load(d, dt) for d in days}
+        data = {d: load(d, dt, SYM) for d in days}
         for lag_ms in (0, 100, 200, 500, 1000, 2000):
             if lag_ms % dt:
                 continue

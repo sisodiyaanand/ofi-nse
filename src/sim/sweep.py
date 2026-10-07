@@ -5,9 +5,10 @@ from rich.table import Table
 from src.sim.as_sim import load, simulate
 
 p0 = yaml.safe_load(open("configs/sim.yaml"))
-days = sorted(f.split("BTCUSDT-")[1][:10] for f in glob.glob("data/parquet/bars-BTCUSDT-*.parquet"))
-data = {d: load(d) for d in days}
-train, test = days[:3], days[3:]
+from src.common import SYM, days_for, split
+days = days_for()
+data = {d: load(d, SYM) for d in days}
+train, test = split(days)
 
 def bps(ds, skew, widen, hs=1.0, fee=0.0):
     p = dict(p0, sig_skew_bps=skew, widen_bps=widen)

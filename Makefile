@@ -9,3 +9,4 @@ final:    ; python -m src.sim.final
 stress:   ; python -m src.sim.stress
 all: test ablation sweep final stress
 latency: ; python -m src.sim.latency
+eth: ; SYM=ETHUSDT $(MAKE) ablation sweep final stress

@@ -5,9 +5,10 @@ from rich.table import Table
 from src.sim.as_sim import load, simulate
 
 p0 = yaml.safe_load(open("configs/sim.yaml"))
-days = sorted(f.split("BTCUSDT-")[1][:10] for f in glob.glob("data/parquet/bars-BTCUSDT-*.parquet"))
-test = days[3:]
-data = {d: load(d) for d in test}
+from src.common import SYM, days_for, split
+days = days_for()
+test = split(days)[1]
+data = {d: load(d, SYM) for d in test}
 avg = np.mean([data[d][0].mean() for d in test])
 t = Table(title="Held-out days, half-spread 1bp, passive-only quotes: fee and latency stress")
 for c in ("config", "fee_bps", "lag_s"):
