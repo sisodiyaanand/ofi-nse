@@ -47,3 +47,8 @@ BTC half-spread 0bp: chosen (1,2) -235.5 USDT vs vanilla -638.8, but vanilla ran
 Chosen minus thinned: +21.5 USDT, 95% CI [+1.1, +41.6]; at 0.5bp +22.0 [+7.8, +36.2]; at 1bp +9.8 [-0.8, +20.4].
 Loss per fill: vanilla -0.98 bps, chosen -0.95, thinned -1.01. ETH shows the same pattern with smaller USD amounts.
 Roughly 95% of the raw improvement is volume reduction, not selection skill.
+
+## Regime split (exploratory, queue model, fee 0, half-spread 0bp, previous-hour realized vol vs train median)
+BTC low vol (61h): chosen minus thinned +18.6 USDT [+8.0, +29.5]; high vol (54h): +0.8 [-13.0, +14.0].
+ETH low vol (56h): +0.8 [+0.2, +1.3]; high vol (13h): +0.4 [+0.1, +0.8].
+Vanilla loses most in high vol on BTC (-409 vs -209), where the signal adds nothing. Exploratory only.
