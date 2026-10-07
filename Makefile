@@ -13,3 +13,4 @@ eth: ; SYM=ETHUSDT $(MAKE) ablation sweep final stress
 report: ; python -m src.sim.report
 queue: ; python -m src.sim.queue
 robust: ; python -m src.sim.robust
+thin: ; python -m src.sim.thin
