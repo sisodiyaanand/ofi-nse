@@ -59,3 +59,9 @@ BTC (12 days): chosen minus thinned +176.3 USDT, 95% CI [+133.3, +216.8]. ETH (1
 BTC bps/fill: vanilla -0.95, chosen -0.92, thinned -0.97. ETH: -0.93, -0.89, -0.93.
 Caveat: thinning ratio was calibrated on exploratory train days, so on BTC the thinned baseline had about 14% more fills than the chosen config (96k vs 83k); part of the +176 USDT is this fill-count mismatch. Per-fill effect is about 0.05 bps.
 Secondary regime split did not replicate: BTC high vol +42.8 [+14.6, +69.9], ETH high vol -1.4 [-3.4, +0.5]. Strategy loses about 0.9 bps per fill at zero fee in all cases.
+
+## Post-hoc per-fill analysis (NOT part of protocol-v1; exploratory; results/posthoc.txt)
+bps per fill on confirmatory days, queue model, fee 0, half-spread 0bp (chosen minus baseline, positive = chosen loses less):
+BTC vs vanilla +0.039 [+0.012, +0.066]; vs thinned (fill-matched) +0.058 [+0.022, +0.096]. ETH vs vanilla +0.042 [+0.014, +0.067]; vs thinned +0.057 [+0.024, +0.087].
+Chosen config loses about 0.95 bps per fill, so the signal removes roughly 5% of adverse selection. The strategy stays unprofitable at zero fee.
+Hypothesis for a future out-of-sample test, not a confirmed claim. Primary protocol-v1 verdict remains NOT CONFIRMED.
