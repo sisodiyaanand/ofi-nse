@@ -52,3 +52,10 @@ Roughly 95% of the raw improvement is volume reduction, not selection skill.
 BTC low vol (61h): chosen minus thinned +18.6 USDT [+8.0, +29.5]; high vol (54h): +0.8 [-13.0, +14.0].
 ETH low vol (56h): +0.8 [+0.2, +1.3]; high vol (13h): +0.4 [+0.1, +0.8].
 Vanilla loses most in high vol on BTC (-409 vs -209), where the signal adds nothing. Exploratory only.
+
+## Confirmatory result (frozen protocol-v1, run once, tag confirm-v1)
+Primary claim (CI lower bound > 0 for both assets): NOT CONFIRMED.
+BTC (12 days): chosen minus thinned +176.3 USDT, 95% CI [+133.3, +216.8]. ETH (12 days): +1.6 [-1.7, +4.5].
+BTC bps/fill: vanilla -0.95, chosen -0.92, thinned -0.97. ETH: -0.93, -0.89, -0.93.
+Caveat: thinning ratio was calibrated on exploratory train days, so on BTC the thinned baseline had about 14% more fills than the chosen config (96k vs 83k); part of the +176 USDT is this fill-count mismatch. Per-fill effect is about 0.05 bps.
+Secondary regime split did not replicate: BTC high vol +42.8 [+14.6, +69.9], ETH high vol -1.4 [-3.4, +0.5]. Strategy loses about 0.9 bps per fill at zero fee in all cases.
