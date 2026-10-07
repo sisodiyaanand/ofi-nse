@@ -11,3 +11,4 @@ all: test ablation sweep final stress
 latency: ; python -m src.sim.latency
 eth: ; SYM=ETHUSDT $(MAKE) ablation sweep final stress
 report: ; python -m src.sim.report
+queue: ; python -m src.sim.queue
