@@ -1,0 +1,18 @@
+                            CONFIRMATORY (frozen protocol-v1): queue model, fee 0, half-spread 0bp, 1s refresh                            
+┏━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ asset   ┃ row                                           ┃  fills ┃    USDT ┃ bps/fill ┃ chosen - thinned: USDT [95% CI, hourly blocks] ┃
+┡━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ BTCUSDT │ vanilla                                       │ 244761 │ -2104.6 │    -0.95 │                                                │
+│ BTCUSDT │ chosen (1, 2) (selected on exploratory train) │  83000 │  -669.4 │    -0.92 │                                                │
+│ BTCUSDT │ vanilla thinned keep=0.38, mean of 20 seeds   │  96372 │  -845.7 │    -0.97 │                                                │
+│ BTCUSDT │ PRIMARY: chosen - thinned                     │        │  +176.3 │          │                               [+133.3, +216.8] │
+│ BTCUSDT │ secondary low vol (177h)                      │        │  +133.5 │          │                               [+112.1, +155.1] │
+│ BTCUSDT │ secondary high vol (99h)                      │        │   +42.8 │          │                                 [+14.6, +69.9] │
+│ ETHUSDT │ vanilla                                       │ 430630 │  -114.9 │    -0.93 │                                                │
+│ ETHUSDT │ chosen (1, 2) (selected on exploratory train) │ 201406 │   -50.4 │    -0.89 │                                                │
+│ ETHUSDT │ vanilla thinned keep=0.44, mean of 20 seeds   │ 193804 │   -51.9 │    -0.93 │                                                │
+│ ETHUSDT │ PRIMARY: chosen - thinned                     │        │    +1.6 │          │                                   [-1.7, +4.5] │
+│ ETHUSDT │ secondary low vol (124h)                      │        │    +2.9 │          │                                   [+1.5, +4.1] │
+│ ETHUSDT │ secondary high vol (150h)                     │        │    -1.4 │          │                                   [-3.4, +0.5] │
+└─────────┴───────────────────────────────────────────────┴────────┴─────────┴──────────┴────────────────────────────────────────────────┘
+PRIMARY CLAIM (CI lower bound > 0 for both assets): NOT CONFIRMED  {'BTCUSDT': np.True_, 'ETHUSDT': np.False_}
