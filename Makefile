@@ -16,3 +16,4 @@ robust: ; python -m src.sim.robust
 thin: ; python -m src.sim.thin
 regime: ; python -m src.sim.regime
 confirm: ; python -m src.sim.confirm
+posthoc: ; python -m src.sim.posthoc
