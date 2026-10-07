@@ -39,5 +39,11 @@ The earlier positive PnL came from quoting at mid, which is not a valid price (t
 BTC held-out 5 days, fee 0, 1s refresh, total USDT (vanilla / skew4-widen0 / skew4-widen1):
 A naive -227 / +341 / +311 | B tick-aware -224 / -192 / -175 | C +queue position -225 / -191 / -174.
 ETH: A -5.0 / +5.4 / +5.0 | B -4.8 / -4.5 / -4.2.
-Under realistic fills the signal cuts loss by about 15-22% but the strategy stays unprofitable even at zero fee.
+Under realistic fills the strategy stays unprofitable even at zero fee. Most of the apparent gain over vanilla comes from trading less (see volume-matched control).
 B ignores touch fills; C ignores cancellations ahead in the queue: both are conservative on fill count.
+
+## Volume-matched control (queue model, fee 0, held-out, single thinning seed)
+BTC half-spread 0bp: chosen (1,2) -235.5 USDT vs vanilla -638.8, but vanilla randomly thinned to the same fill count gives -257.0.
+Chosen minus thinned: +21.5 USDT, 95% CI [+1.1, +41.6]; at 0.5bp +22.0 [+7.8, +36.2]; at 1bp +9.8 [-0.8, +20.4].
+Loss per fill: vanilla -0.98 bps, chosen -0.95, thinned -1.01. ETH shows the same pattern with smaller USD amounts.
+Roughly 95% of the raw improvement is volume reduction, not selection skill.
