@@ -65,3 +65,10 @@ bps per fill on confirmatory days, queue model, fee 0, half-spread 0bp (chosen m
 BTC vs vanilla +0.039 [+0.012, +0.066]; vs thinned (fill-matched) +0.058 [+0.022, +0.096]. ETH vs vanilla +0.042 [+0.014, +0.067]; vs thinned +0.057 [+0.024, +0.087].
 Chosen config loses about 0.95 bps per fill, so the signal removes roughly 5% of adverse selection. The strategy stays unprofitable at zero fee.
 Hypothesis for a future out-of-sample test, not a confirmed claim. Primary protocol-v1 verdict remains NOT CONFIRMED.
+
+## Implementation note (2026-10-10)
+In `src/sim/confirm.py`, hourly PnL drops the first hour of each day (the secondary
+volatility flag uses the previous hour), while fills are counted over the whole day.
+PnL totals and fill totals therefore cover slightly different windows. Per-fill
+figures are computed in `src/sim/posthoc.py` on matching hourly windows. The frozen
+`PROTOCOL.md` is unchanged.
