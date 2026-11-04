@@ -1,4 +1,4 @@
-# Frozen confirmatory protocol v2 (DRAFT, not yet frozen)
+# Frozen confirmatory protocol v2
 
 Status: v1 primary claim (PnL chosen - thinned, CI lower bound > 0 for both assets) was NOT CONFIRMED.
 v2 tests one pre-specified hypothesis, derived post hoc from v1 (results/posthoc.txt), on days never analysed before.
@@ -29,3 +29,8 @@ Low/high vol split, bps per fill vs unthinned vanilla, maker fee 0.5 bps and rea
 
 ## Reporting
 All outputs saved to results/confirmatory_v2.txt. Failure is reported as plainly as success.
+
+## Frozen day set and runner (fixed before any v2 simulation)
+Unseen set U, identical for both assets: 2026-10-02 .. 2026-10-10 (Tardis free trial) and 2026-11-01 (free day). n_min = 10.
+All days listed in configs/v2_days.yaml. Runner: python -m src.sim.v2 (src/sim/v2.py). Its --selftest reproduces results/posthoc.txt exactly.
+Config (1, 2) is the v1 choice and is not retuned. The run happens once; its output is saved to results/confirmatory_v2.txt.
