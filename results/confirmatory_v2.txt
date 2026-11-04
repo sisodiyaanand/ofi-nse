@@ -1,0 +1,10 @@
+         CONFIRMATORY (frozen protocol-v2): bps per fill, queue model, fee 0, half-spread 0bp. Positive diff = chosen loses less per fill          
+┏━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ asset   ┃ days ┃ baseline                       ┃ fills chosen ┃ fills baseline ┃ bps/fill chosen ┃ bps/fill baseline ┃  diff bps/fill [95% CI] ┃
+┡━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ BTCUSDT │   10 │ PRIMARY: thinned, fill-matched │        45820 │          47570 │          -0.940 │            -0.944 │ +0.004 [-0.039, +0.045] │
+│ BTCUSDT │   10 │ secondary: vanilla             │        45820 │         119671 │          -0.940 │            -0.952 │ +0.012 [-0.036, +0.054] │
+│ ETHUSDT │   10 │ PRIMARY: thinned, fill-matched │        61354 │          63229 │          -0.897 │            -0.972 │ +0.075 [+0.028, +0.123] │
+│ ETHUSDT │   10 │ secondary: vanilla             │        61354 │         153794 │          -0.897 │            -0.962 │ +0.065 [+0.009, +0.112] │
+└─────────┴──────┴────────────────────────────────┴──────────────┴────────────────┴─────────────────┴───────────────────┴─────────────────────────┘
+H1 (CI lower bound > 0 for both assets): NOT CONFIRMED  {'BTCUSDT': False, 'ETHUSDT': True}
