@@ -72,3 +72,10 @@ volatility flag uses the previous hour), while fills are counted over the whole 
 PnL totals and fill totals therefore cover slightly different windows. Per-fill
 figures are computed in `src/sim/posthoc.py` on matching hourly windows. The frozen
 `PROTOCOL.md` is unchanged.
+
+## Confirmatory result (frozen protocol-v2, run once, tag protocol-v2)
+H1 (per-fill bps, chosen minus fill-matched thinned vanilla, CI lower bound > 0 for both assets): NOT CONFIRMED.
+Unseen days: 2026-10-02..10 and 2026-11-01 (10 days per asset), queue model, fee 0, half-spread 0bp.
+BTCUSDT: +0.004 [-0.039, +0.045] bps/fill. ETHUSDT: +0.075 [+0.028, +0.123] bps/fill.
+Chosen config loses about 0.94 (BTC) and 0.90 (ETH) bps per fill at zero fee; strategy remains unprofitable.
+Across v1 (PnL metric: BTC yes, ETH no) and v2 (per-fill metric: ETH yes, BTC no) the signal effect does not replicate in both assets. Output: results/confirmatory_v2.txt.
