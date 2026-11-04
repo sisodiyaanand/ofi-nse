@@ -10,7 +10,7 @@ Effect size seen post hoc in v1: about +0.05 bps/fill. This is a hypothesis, not
 
 ## Data
 Unseen set U: only days that appear in no prior analysis (not in the 25 days used by v1 or exploratory work).
-U is written to configs/v2_days.txt and committed BEFORE any simulation is run on those days.
+U is written to configs/v2_days.yaml and committed BEFORE any simulation is run on those days.
 Known candidate already downloaded: 2026-11-01 (bars built, no simulation run).
 
 ## Fixed rules, no retuning
@@ -20,7 +20,7 @@ Known candidate already downloaded: 2026-11-01 (bars built, no simulation run).
 - Metric: bps per fill, chosen minus thinned baseline, per asset, over hourly windows that match for both sides.
 - Uncertainty: moving-block bootstrap over hours, block 3, 5000 resamples, 95% CI.
 - H1 is supported only if the CI lower bound is above 0 for BOTH assets. Otherwise: not confirmed.
-- Minimum size: no claim is reported until |U| >= N_min days per asset. N_min is set in configs/v2_days.txt at freeze time.
+- Minimum size: no claim is reported until |U| >= N_min days per asset. N_min is set in configs/v2_days.yaml at freeze time.
   (Power note: about 10 days if the true effect equals the post hoc estimate, about 40 days if it is half as large.)
 - No interim peeking: results are computed once, after the last day of U is in.
 
