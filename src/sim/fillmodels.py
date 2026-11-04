@@ -4,7 +4,7 @@ Outputs fixed before running, no parameter is tuned (chosen config (skew 1, wide
     Gap A-C and B-C in USDT/day with 95% CI (bootstrap over days, 5000).
  2. Fee grid, model C (fee in bps, negative = rebate): total USDT, and linear breakeven maker fee.
  3. Latency, model C: total USDT for extra lag 0, 1, 2 s.
-  python -m src.sim.fillmodels --selfcheck   # chosen/model C fills on v1 days must equal confirm-v1 (83000 BTC, 199876 ETH)
+  python -m src.sim.fillmodels --selfcheck   # chosen/model C fills on v1 days must equal confirm-v1 (83000 BTC, 201406 ETH, as printed by confirm-v1; posthoc trims first hours)
   python -m src.sim.fillmodels               # full run, writes results/fillmodels.txt
 """
 import sys
@@ -65,7 +65,7 @@ def boot(x, B=5000, seed=0):
 
 if __name__ == "__main__":
     if "--selfcheck" in sys.argv:
-        want = {"BTCUSDT": 83000, "ETHUSDT": 199876}
+        want = {"BTCUSDT": 83000, "ETHUSDT": 201406}
         for sym in SYMS:
             f = sum(one(load(d, sym), sym, 2, 0.0, "chosen")[1] for d in V1_CONF[sym])
             print(sym, "chosen fills on v1 days:", f, "expected", want[sym])
