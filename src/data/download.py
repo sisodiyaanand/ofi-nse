@@ -28,7 +28,7 @@ def fetch(sym, day, short, kind):
     req = urllib.request.Request(url)
     if KEY: req.add_header("Authorization", f"Bearer {KEY}")
     try:
-        with urllib.request.urlopen(req) as r, open(dst + ".part", "wb") as f:
+        with urllib.request.urlopen(req, timeout=120) as r, open(dst + ".part", "wb") as f:
             shutil.copyfileobj(r, f)
         os.replace(dst + ".part", dst)
     except urllib.error.HTTPError as e:

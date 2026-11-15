@@ -1,0 +1,69 @@
+                 Assets (tick detected from data by rule)                  
+┏━━━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┓
+┃ asset    ┃ days ┃   tick ┃ tick bp ┃ median quoted spread bp ┃ mean mid ┃
+┡━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━┩
+│ SOLUSDT  │   23 │  0.001 │   0.075 │                   0.790 │   133.11 │
+│ BNBUSDT  │   23 │   0.01 │   0.139 │                   0.146 │    718.7 │
+│ XRPUSDT  │   23 │ 0.0001 │   0.519 │                   0.492 │   1.9282 │
+│ DOGEUSDT │   23 │  1e-05 │   0.649 │                   0.732 │   0.1541 │
+└──────────┴──────┴────────┴─────────┴─────────────────────────┴──────────┘
+               CONFIRMATORY v3: bps per fill, queue model, fee 0, half-spread 0bp. Positive diff = chosen loses less per fill                
+┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ asset    ┃ baseline                       ┃ fills chosen ┃ fills baseline ┃ bps/fill chosen ┃ bps/fill baseline ┃  diff bps/fill [95% CI] ┃
+┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ SOLUSDT  │ PRIMARY: thinned, fill-matched │       474517 │         474338 │          -1.068 │            -1.126 │ +0.058 [+0.044, +0.072] │
+│ BNBUSDT  │ PRIMARY: thinned, fill-matched │       181010 │         184958 │          -0.969 │            -1.089 │ +0.120 [+0.092, +0.148] │
+│ XRPUSDT  │ PRIMARY: thinned, fill-matched │       464413 │         465116 │          -0.890 │            -1.017 │ +0.127 [+0.112, +0.142] │
+│ DOGEUSDT │ PRIMARY: thinned, fill-matched │       467038 │         468342 │          -0.966 │            -1.100 │ +0.134 [+0.116, +0.153] │
+│ POOLED   │ PRIMARY: thinned, fill-matched │      1586978 │        1592756 │          -0.975 │            -1.082 │ +0.108 [+0.099, +0.116] │
+│ SOLUSDT  │ secondary: vanilla             │       474517 │         540081 │          -1.068 │            -1.119 │ +0.052 [+0.039, +0.064] │
+│ BNBUSDT  │ secondary: vanilla             │       181010 │         436198 │          -0.969 │            -1.047 │ +0.078 [+0.054, +0.103] │
+│ XRPUSDT  │ secondary: vanilla             │       464413 │         595894 │          -0.890 │            -1.008 │ +0.118 [+0.105, +0.131] │
+│ DOGEUSDT │ secondary: vanilla             │       467038 │         558969 │          -0.966 │            -1.092 │ +0.126 [+0.108, +0.144] │
+│ POOLED   │ secondary: vanilla             │      1586978 │        2131142 │          -0.975 │            -1.066 │ +0.092 [+0.083, +0.100] │
+└──────────┴────────────────────────────────┴──────────────┴────────────────┴─────────────────┴───────────────────┴─────────────────────────┘
+Fill-model gap (vanilla quoter, fee 0, lag 0): fills and bps/fill per
+                  fill model and quoted half-spread                  
+┏━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ asset    ┃ hs bp ┃ model        ┃   fills ┃ bps/fill ┃ fills vs C ┃
+┡━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ SOLUSDT  │     0 │ A naive      │ 2517249 │   -0.135 │      4.65x │
+│ SOLUSDT  │     0 │ B tick-aware │  505910 │   -1.193 │      0.93x │
+│ SOLUSDT  │     0 │ C tick+queue │  541114 │   -1.119 │      1.00x │
+│ SOLUSDT  │     1 │ A naive      │  487387 │   -0.790 │      1.15x │
+│ SOLUSDT  │     1 │ B tick-aware │  406836 │   -1.002 │      0.96x │
+│ SOLUSDT  │     1 │ C tick+queue │  425124 │   -0.952 │      1.00x │
+│ SOLUSDT  │     2 │ A naive      │  193626 │   -0.826 │      1.00x │
+│ SOLUSDT  │     2 │ B tick-aware │  179692 │   -0.871 │      0.93x │
+│ SOLUSDT  │     2 │ C tick+queue │  193530 │   -0.786 │      1.00x │
+│ BNBUSDT  │     0 │ A naive      │ 1565234 │   -0.277 │      3.56x │
+│ BNBUSDT  │     0 │ B tick-aware │  398897 │   -1.147 │      0.91x │
+│ BNBUSDT  │     0 │ C tick+queue │  439153 │   -1.047 │      1.00x │
+│ BNBUSDT  │     1 │ A naive      │  213506 │   -0.925 │      1.00x │
+│ BNBUSDT  │     1 │ B tick-aware │  181624 │   -0.994 │      0.85x │
+│ BNBUSDT  │     1 │ C tick+queue │  212586 │   -0.866 │      1.00x │
+│ BNBUSDT  │     2 │ A naive      │   69396 │   -0.889 │      1.00x │
+│ BNBUSDT  │     2 │ B tick-aware │   59962 │   -0.960 │      0.86x │
+│ BNBUSDT  │     2 │ C tick+queue │   69384 │   -0.820 │      1.00x │
+│ XRPUSDT  │     0 │ A naive      │ 2156134 │   -0.246 │      3.61x │
+│ XRPUSDT  │     0 │ B tick-aware │  527837 │   -1.241 │      0.88x │
+│ XRPUSDT  │     0 │ C tick+queue │  597786 │   -1.009 │      1.00x │
+│ XRPUSDT  │     1 │ A naive      │  434242 │   -0.907 │      1.04x │
+│ XRPUSDT  │     1 │ B tick-aware │  270747 │   -1.176 │      0.65x │
+│ XRPUSDT  │     1 │ C tick+queue │  418372 │   -0.725 │      1.00x │
+│ XRPUSDT  │     2 │ A naive      │  175114 │   -0.903 │      1.00x │
+│ XRPUSDT  │     2 │ B tick-aware │  112523 │   -1.134 │      0.64x │
+│ XRPUSDT  │     2 │ C tick+queue │  175080 │   -0.658 │      1.00x │
+│ DOGEUSDT │     0 │ A naive      │ 1867350 │   -0.334 │      3.33x │
+│ DOGEUSDT │     0 │ B tick-aware │  496276 │   -1.365 │      0.89x │
+│ DOGEUSDT │     0 │ C tick+queue │  560731 │   -1.090 │      1.00x │
+│ DOGEUSDT │     1 │ A naive      │  475328 │   -0.916 │      1.11x │
+│ DOGEUSDT │     1 │ B tick-aware │  259020 │   -1.309 │      0.60x │
+│ DOGEUSDT │     1 │ C tick+queue │  428882 │   -0.772 │      1.00x │
+│ DOGEUSDT │     2 │ A naive      │  196172 │   -0.960 │      1.00x │
+│ DOGEUSDT │     2 │ B tick-aware │  109858 │   -1.305 │      0.56x │
+│ DOGEUSDT │     2 │ C tick+queue │  196088 │   -0.633 │      1.00x │
+└──────────┴───────┴──────────────┴─────────┴──────────┴────────────┘
+H1 (pooled CI lower bound of chosen minus fill-matched thinned vanilla > 0): SUPPORTED; per-asset lower>0: {'SOLUSDT': True, 'BNBUSDT': True, 'XRPUSDT': True, 'DOGEUSDT':
+True}
+H2 (descriptive, n=4 assets, two-sided): Spearman(tick size in bp, naive/queue fill ratio at hs 0) = -0.80
