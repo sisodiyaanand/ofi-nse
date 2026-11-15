@@ -1,0 +1,17 @@
+ Robustness of the v3 effect: diff = chosen minus fill-matched thinned vanilla, bps per fill (model C,  
+                                         fee 0, half-spread 0)                                          
+┏━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ asset    ┃ days ┃ tick bp ┃ spread bp ┃               REAL diff ┃ PLACEBO diff (signal shifted) [CI] ┃
+┡━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ BTCUSDT  │   35 │   0.012 │     0.012 │ +0.037 [+0.010, +0.061] │            +0.061 [+0.049, +0.072] │
+│ ETHUSDT  │   35 │   0.037 │     0.039 │ +0.065 [+0.046, +0.083] │            +0.088 [+0.076, +0.099] │
+│ SOLUSDT  │   23 │   0.075 │     0.790 │ +0.059 [+0.046, +0.071] │            +0.041 [+0.032, +0.049] │
+│ BNBUSDT  │   23 │   0.139 │     0.146 │ +0.121 [+0.092, +0.146] │            +0.111 [+0.095, +0.124] │
+│ XRPUSDT  │   23 │   0.519 │     0.492 │ +0.127 [+0.109, +0.145] │            +0.103 [+0.088, +0.115] │
+│ DOGEUSDT │   23 │   0.649 │     0.732 │ +0.135 [+0.123, +0.147] │            +0.102 [+0.090, +0.115] │
+└──────────┴──────┴─────────┴───────────┴─────────────────────────┴────────────────────────────────────┘
+POOLED, 4 v3 assets, same days resampled jointly across assets (keeps cross-asset dependence):
+  REAL    diff +0.108 bps/fill  95% CI [+0.099, +0.117]   (hour-block CI in the confirmatory run: [+0.099, +0.116])
+  PLACEBO diff +0.086 bps/fill  95% CI [+0.079, +0.092]
+  Real effect survives placebo and cluster CI: True
+Cross-asset (n=6, descriptive): Spearman(diff, tick bp) = +0.94; Spearman(diff, spread bp) = +0.43
